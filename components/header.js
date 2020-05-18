@@ -1,41 +1,52 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+import { Dimensions } from "react-native";
 
-export default function Header( { navigation, title }) {
+var width = Dimensions.get("window").width; //full width
+var height = Dimensions.get("window").height; //full height
 
-    const openMenu = () => {
-        navigation.openDrawer()
-    }
+export default function Header({ navigation, title }) {
+  const openMenu = () => {
+    navigation.openDrawer();
+  };
 
-    return (
-        <View style={styles.header}>
-            <MaterialIcons name='menu' size={40} onPress={openMenu} style={styles.icon} />
-            <View>
-                <Text style={styles.headerText}>{ title }</Text>
-            </View>
-        </View>
-    );
+  return (
+    <View style={styles.header}>
+      <View style={styles.spacer}></View>
+      <Text style={styles.headerText}>{title}</Text>
+      <MaterialIcons
+        name="menu"
+        size={40}
+        onPress={openMenu}
+        style={styles.icon}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    header: {
-        width: '100%',
-        height: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        // backgroundColor: 'red'
-    },
-    headerText: {
-        fontWeight: 'bold',
-        fontSize: 30,
-        color: '#333',
-        letterSpacing: 2,
-    },
-    icon: {
-        position: 'absolute',
-        right: -140,
-      
-    }
+  header: {
+    width: width,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    alignContent: "center",
+    // backgroundColor: 'red'
+  },
+  spacer: {
+    flex: 1,
+  },
+  headerText: {
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: 30,
+    color: "#333",
+    letterSpacing: 2,
+    flex: 1,
+  },
+  icon: {
+    flex: 1,
+    textAlign: "right",
+  },
 });
