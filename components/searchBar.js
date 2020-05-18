@@ -15,10 +15,12 @@ export default class SearchBar extends React.Component {
 
     return (
       <SearchBar
+        round
+        lightTheme
         placeholder="Type Here..."
+        placeholderTextColor='#eee'
         onChangeText={this.updateSearch}
         value={search}
-        borderRadius = 100
       />
     );
   }

@@ -25,6 +25,6 @@ export const globalStyles = StyleSheet.create({
       }, 
     button: {
         marginTop: 30,
-        color: 'black'
+        
     }
 })

@@ -1,11 +1,16 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import CompletedTasks from '../screens/completedTasks';
+import Header from '../components/header';
+import React from 'react';
 
 const screens = {
     CompletedTasks: {
         screen: CompletedTasks,
-        navigationOptions: {
-            title: 'Completed Tasks',
+        navigationOptions: ({ navigation }) => {
+            return {
+                // headerTitle can be a function as a value which can return a component. 'title' can not. 'title' can only return a string
+                headerTitle: () => <Header navigation={navigation} title='Completed Tasks' />,
+            }
         }
     },
 }
@@ -13,7 +18,7 @@ const screens = {
 
 const CompletedTasksStack = createStackNavigator(screens, {
     defaultNavigationOptions: {
-        headerStyle: { height: 90 }
+        headerStyle: { height: 90, backgroundColor: '#eee' },
     }
 });
 

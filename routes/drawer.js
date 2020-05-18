@@ -5,7 +5,7 @@ import AboutStack from './aboutStack';
 import CompletedTasksStack from './completedTaskStack';
 
 const RootDrawerNavigator = createDrawerNavigator({
-    Projects: {
+    Tasks: {
         screen: HomeStack,
     },
     CompletedTasks: {
