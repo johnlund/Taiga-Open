@@ -13,7 +13,6 @@ export default function Header({ navigation, title }) {
 
   return (
     <View style={styles.header}>
-      <View style={styles.spacer}></View>
       <Text style={styles.headerText}>{title}</Text>
       <MaterialIcons
         name="menu"
@@ -27,15 +26,12 @@ export default function Header({ navigation, title }) {
 
 const styles = StyleSheet.create({
   header: {
-    width: width,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    alignContent: "center",
-    // backgroundColor: 'red'
-  },
-  spacer: {
+    //width: width - width * 0.33,
     flex: 1,
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    alignItems: "flex-start",
+    // backgroundColor: 'red'
   },
   headerText: {
     fontWeight: "bold",
@@ -46,7 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   icon: {
-    flex: 1,
     textAlign: "right",
+    flex: 1,
   },
 });
