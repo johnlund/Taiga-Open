@@ -8,12 +8,15 @@ const RootDrawerNavigator = createDrawerNavigator({
     Projects: {
         screen: HomeStack,
     },
+    CompletedTasks: {
+        screen: CompletedTasksStack,
+    },
     About: {
         screen: AboutStack,
     },
-    CompletedTasks: {
-        screen: CompletedTasksStack,
-    }
+},
+{
+    drawerPosition: 'right',
 });
 
 export default createAppContainer(RootDrawerNavigator);
