@@ -9,10 +9,13 @@ export const globalStyles = StyleSheet.create({
     },
     input: {
         padding: 8,
-        borderBottomWidth: 3,
-        borderBottomColor: 'black',
+         borderColor: '#ddd',
+        // borderBottomWidth: 3,
+        // borderBottomColor: 'black',
         marginBottom: 5,
-        width: 120
+        borderWidth: 3,
+        width: 200,
+        borderRadius: 10,
     },
     container: {
         flex: 1,
@@ -22,5 +25,6 @@ export const globalStyles = StyleSheet.create({
       }, 
     button: {
         marginTop: 30,
+        color: 'black'
     }
 })

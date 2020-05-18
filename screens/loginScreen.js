@@ -24,7 +24,7 @@ export default function LoginScreen({navigation}) {
                     <View style={globalStyles.button}>
                         <Button
                             title='Submit'
-                            color='rgb(37, 162, 140)'
+                            color='black'
                             onPress={pressHandler}
                         />
                     </View>

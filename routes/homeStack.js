@@ -20,7 +20,7 @@ const screens = {
         screen: ProjectsScreen,
         navigationOptions: {
             title: 'Tasks'
-        }
+        },
     }
 }
 
