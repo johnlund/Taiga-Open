@@ -10,7 +10,7 @@ export default function ServerLogin({ navigation }) {
 
     return (
         <View style={globalStyles.container}>
-          <Text style={globalStyles.text}>Server Login</Text>
+          <Text style={globalStyles.text}>Server URL</Text>
           <View>
               <View style={globalStyles.input}>
                 <TextInput         

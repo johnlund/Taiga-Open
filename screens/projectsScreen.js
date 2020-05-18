@@ -5,7 +5,16 @@ import { globalStyles } from '../styles/global';
 export default function ProjectsScreen() {
     return (
         <View>
-            <Text style={globalStyles.text}>Your Projects</Text>
+            <Text style={styles.text}></Text>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    text: {
+        marginBottom: 50,
+        fontSize: 35,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+});
