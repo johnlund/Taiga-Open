@@ -14,8 +14,9 @@ export const globalStyles = StyleSheet.create({
         // borderBottomColor: 'black',
         marginBottom: 5,
         borderWidth: 3,
-        width: 200,
+        width: 300,
         borderRadius: 10,
+        alignItems: 'center'
     },
     container: {
         flex: 1,
