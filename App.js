@@ -2,6 +2,9 @@ import React from "react";
 import { StyleSheet, Text, SafeAreaView } from "react-native";
 import ServerLogin from "./screens/serverLogin";
 import Navigator from "./routes/drawer";
+import Icon from "react-native-vector-icons/FontAwesome";
+
+Icon.loadFont();
 
 export default function App() {
   return (

@@ -1,11 +1,13 @@
 import { createStackNavigator } from "react-navigation-stack";
 import { StyleSheet, Text, View, Button } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import { Icon } from "react-native-elements";
 import ServerLogin from "../screens/serverLogin";
 import LoginScreen from "../screens/loginScreen";
 import ProjectsScreen from "../screens/projectsScreen";
-import Header from "../components/header";
 import React from "react";
+import IconMI from "react-native-vector-icons/MaterialIcons";
+
+IconMI.loadFont();
 
 const screens = {
   ServerLogin: {
@@ -27,7 +29,7 @@ const screens = {
         // headerTitle can be a function as a value which can return a component. 'title' can not. 'title' can only return a string
         headerTitle: "Tasks",
         headerRight: () => (
-          <MaterialIcons
+          <Icon
             name="menu"
             size={40}
             onPress={() => {
