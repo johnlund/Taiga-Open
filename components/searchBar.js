@@ -1,26 +1,14 @@
-import { SearchBar } from 'react-native-elements';
-import React from 'react';
+import { SearchBar } from "react-native-elements";
+import React, { Component } from "react";
 
-export default class SearchBar extends React.Component {
-  state = {
-    search: '',
-  };
-
-  updateSearch = search => {
-    this.setState({ search });
-  };
-
-  render() {
-    const { search } = this.state;
-
-    return (
-      <SearchBar
-        round
-        lightTheme
-        placeholder="Type Here..."
-        onChangeText={this.updateSearch}
-        value={search}
-      />
-    );
-  }
+export default function SearchBarComp({ handleSearchResults, searchResults }) {
+  return (
+    <SearchBar
+      round
+      lightTheme
+      placeholder="Type Here..."
+      onChangeText={handleSearchResults}
+      value={searchResults}
+    />
+  );
 }

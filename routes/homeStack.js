@@ -26,7 +26,6 @@ const screens = {
     screen: ProjectsScreen,
     navigationOptions: ({ navigation }) => {
       return {
-        // headerTitle can be a function as a value which can return a component. 'title' can not. 'title' can only return a string
         headerTitle: "Tasks",
         headerRight: () => (
           <Icon
@@ -37,43 +36,10 @@ const screens = {
             }}
           />
         ),
-        // headerRight: () => {
-        //   <MaterialIcons name="menu" size={40} onPress={openMenu} />;
-        // },
-        // header: ({ scene, previous, navigation }) => {
-        //   const { options } = scene.descriptor;
-        //   const title = "Tasks";
-        //   return (
-        //     <Header
-        //       title={title}
-        //       // leftButton={
-        //       //   previous ? (
-        //       //     <MyBackButton onPress={navigation.goBack} />
-        //       //   ) : undefined
-        //       // }
-        //       style={styles.header}
-        //     />
-        //   );
-        // },
       };
     },
   },
 };
-
-const openMenu = (navigation) => {
-  navigation.openDrawer();
-};
-
-const styles = StyleSheet.create({
-  header: {
-    //width: width - width * 0.33,
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    alignItems: "flex-start",
-    // backgroundColor: 'red'
-  },
-});
 
 const HomeStack = createStackNavigator(screens, {
   defaultNavigationOptions: {
@@ -82,5 +48,14 @@ const HomeStack = createStackNavigator(screens, {
     },
   },
 });
+
+// const styles = StyleSheet.create({
+//   header: {
+//     flex: 1,
+//     flexDirection: "row",
+//     justifyContent: "flex-end",
+//     alignItems: "flex-start",
+//   },
+// });
 
 export default HomeStack;

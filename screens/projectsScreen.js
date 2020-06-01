@@ -1,14 +1,13 @@
 import React, { useState } from "react";
+import { View, StyleSheet, Text } from "react-native";
+import SearchBarComp from "../components/searchBar";
+import { ListItem, CheckBox } from "react-native-elements";
 import {
-  View,
-  StyleSheet,
-  TextInput,
-  Text,
-  TouchableOpacity,
-  Button,
-} from "react-native";
-import { globalStyles } from "../styles/global";
-import { SearchBar } from "react-native-elements";
+  Collapse,
+  CollapseHeader,
+  CollapseBody,
+} from "accordion-collapse-react-native";
+import { State } from "react-native-gesture-handler";
 
 var DATA = [
   {
@@ -97,6 +96,26 @@ var DATA = [
     tasks: [],
     total_attachments: 0,
     assigned_users: [5],
+    practiceProject: {
+      title: "Project 1",
+      tasksToComplete: [
+        {
+          task: "Complete Search Bar",
+          isChecked: false,
+          taskDescription: "What we need to do",
+        },
+        {
+          task: "Accordion Results",
+          isChecked: false,
+          taskDescription: "Other things we need to do",
+        },
+        {
+          task: "What's Next?",
+          isChecked: false,
+          taskDescription: "More things to do",
+        },
+      ],
+    },
   },
   {
     due_date: null,
@@ -184,6 +203,26 @@ var DATA = [
     tasks: [],
     total_attachments: 0,
     assigned_users: [5],
+    practiceProject: {
+      title: "Project 2",
+      tasksToComplete: [
+        {
+          task: "Complete Search Bar 2",
+          isChecked: false,
+          taskDescription: "What we need to do",
+        },
+        {
+          task: "Accordion Results 2",
+          isChecked: false,
+          taskDescription: "Other things we need to do",
+        },
+        {
+          task: "What's Next 2?",
+          isChecked: false,
+          taskDescription: "More things to do",
+        },
+      ],
+    },
   },
   {
     due_date: null,
@@ -269,14 +308,83 @@ var DATA = [
     tasks: [],
     total_attachments: 0,
     assigned_users: [13],
+    practiceProject: {
+      title: "Project 3",
+      tasksToComplete: [
+        {
+          task: "Complete Search Bar 3",
+          isChecked: false,
+          taskDescription: "What we need to do",
+        },
+        {
+          task: "Accordion Results 3",
+          isChecked: false,
+          taskDescription: "Other things we need to do",
+        },
+        {
+          task: "What's Next 3?",
+          isChecked: false,
+          taskDescription: "More things to do",
+        },
+      ],
+    },
   },
 ];
 
 export default function ProjectsScreen() {
+  const [searchResults, getSearchResults] = useState("");
+
+  const [Data, updateData] = useState(DATA);
+
+  const handleSearchResults = (search) => {
+    getSearchResults(search);
+  };
+
+  const handleCheckBox = (index1, index2) => {
+    let data = Data[index1].practiceProject.tasksToComplete[index2].isChecked;
+    console.log(data);
+    updateData(
+      [...Data],
+      (Data[index1].practiceProject.tasksToComplete[index2].isChecked = !data)
+    );
+  };
+
   return (
     <View>
-      <SearchBar />
+      <SearchBarComp
+        handleSearchResults={handleSearchResults}
+        searchResults={searchResults}
+      />
       <Text style={styles.text}></Text>
+      {Data.map((d, idx1) => {
+        return (
+          <Collapse key={idx1}>
+            <CollapseHeader>
+              <ListItem title={d.practiceProject.title} bottomDivider />
+            </CollapseHeader>
+            <CollapseBody>
+              {d.practiceProject.tasksToComplete.map((stat, idx2) => {
+                return (
+                  <ListItem
+                    key={idx2}
+                    title={stat.task}
+                    subtitle={stat.taskDescription}
+                    leftAvatar={
+                      <CheckBox
+                        key={stat.task}
+                        size={60}
+                        checkedColor="green"
+                        checked={stat.isChecked}
+                        onPress={() => handleCheckBox(idx1, idx2)}
+                      />
+                    }
+                  />
+                );
+              })}
+            </CollapseBody>
+          </Collapse>
+        );
+      })}
     </View>
   );
 }
@@ -289,3 +397,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+// Loop through every task, pull out projects
+// for each project ,create new List component(Project Component)
+// inside each project component, list component
+// filter out only projects with that id
