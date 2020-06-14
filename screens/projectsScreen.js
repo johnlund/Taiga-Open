@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { ScrollView, StyleSheet, Text } from "react-native";
 import SearchBarComp from "../components/searchBar";
 import { ListItem, CheckBox } from "react-native-elements";
 import {
@@ -7,7 +7,6 @@ import {
   CollapseHeader,
   CollapseBody,
 } from "accordion-collapse-react-native";
-import { State } from "react-native-gesture-handler";
 
 var DATA = [
   {
@@ -340,17 +339,14 @@ export default function ProjectsScreen() {
     getSearchResults(search);
   };
 
-  const handleCheckBox = (index1, index2) => {
-    let data = Data[index1].practiceProject.tasksToComplete[index2].isChecked;
+  const handleCheckBox = (index) => {
+    let data = Data[index].owner_extra_info.is_active;
     console.log(data);
-    updateData(
-      [...Data],
-      (Data[index1].practiceProject.tasksToComplete[index2].isChecked = !data)
-    );
+    updateData([...Data], (Data[index].owner_extra_info.is_active = !data));
   };
 
   return (
-    <View>
+    <ScrollView style={styles.scrollView}>
       <SearchBarComp
         handleSearchResults={handleSearchResults}
         searchResults={searchResults}
@@ -360,32 +356,30 @@ export default function ProjectsScreen() {
         return (
           <Collapse key={idx1}>
             <CollapseHeader>
-              <ListItem title={d.practiceProject.title} bottomDivider />
+              <ListItem title={d.subject} bottomDivider />
             </CollapseHeader>
             <CollapseBody>
-              {d.practiceProject.tasksToComplete.map((stat, idx2) => {
-                return (
-                  <ListItem
-                    key={idx2}
-                    title={stat.task}
-                    subtitle={stat.taskDescription}
-                    leftAvatar={
-                      <CheckBox
-                        key={stat.task}
-                        size={60}
-                        checkedColor="green"
-                        checked={stat.isChecked}
-                        onPress={() => handleCheckBox(idx1, idx2)}
-                      />
-                    }
+              {/* {d.owner_extra_info.map((stat, idx2) => {
+                return ( */}
+              <ListItem
+                title={d.owner_extra_info.username}
+                subtitle={d.assigned_to_extra_info.full_name_display}
+                leftAvatar={
+                  <CheckBox
+                    key={d.subject}
+                    size={60}
+                    checkedColor="green"
+                    checked={d.owner_extra_info.is_active}
+                    onPress={() => handleCheckBox(idx1)}
                   />
-                );
-              })}
+                }
+                rightAvatar={{ source: { uri: d.owner_extra_info.photo } }}
+              />
             </CollapseBody>
           </Collapse>
         );
       })}
-    </View>
+    </ScrollView>
   );
 }
 
@@ -393,12 +387,16 @@ const styles = StyleSheet.create({
   text: {
     marginBottom: 50,
     fontSize: 35,
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    textAlign: "center",
   },
 });
 
-// Loop through every task, pull out projects
+{
+  /* // Loop through every task, pull out projects
 // for each project ,create new List component(Project Component)
 // inside each project component, list component
-// filter out only projects with that id
+// filter out only projects with that id */
+}
